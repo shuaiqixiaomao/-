@@ -1,0 +1,75 @@
+#include<stdio.h>
+#include<windows.h>
+#include<conio.h>
+#include<string.h>
+char migong[1000][1000]=
+{
+	    "*#*********",
+		"***###*###*",
+		"###**#****#",
+		"*#**###**#*",
+		"***********",
+		"#####*##*##",
+		"**#*****#*E",
+		"***#*###**#",
+		"*#*********",
+		
+};
+		int N=9,M;
+int k,t;
+void printPerson()
+{	COORD pos;
+	pos.X =k;
+	pos.Y =t;
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),pos);	
+	printf("H");}
+void printMap()
+{
+	for(int i=0;i<N;i++)
+	{	
+		printf("%s\n",migong[i]);
+	}
+	printPerson();
+}void Move(char dir)
+{
+	switch(dir)	
+	{	
+	case 'w':		
+	t--;	
+	if(t<0) t=0;
+	if(migong[t][k]=='#') t++;
+	break;	
+	case 's':	
+    t++;
+	if(t>=N) t=N-1;
+	if(migong[t][k]=='#') t--;
+	break;
+	case 'a':
+    k--;	
+	if(k<0) k=0;
+	if(migong[t][k]=='#') k++;
+	break;
+	case 'd':
+	k++;	
+	if(k>=M) k=M-1;
+	if(migong[t][k]=='#') k--;
+	break;
+				}
+}
+int main()
+{	
+	char z;	M=strlen(migong[0]);
+	while(1)
+	{	
+		system("cls");
+		printMap();
+		z=getch();
+		Move(z);
+		if(migong[t][k]=='E')
+		{	
+			printf("通过成功");
+			break;
+		}
+	}
+return 0;}
+
