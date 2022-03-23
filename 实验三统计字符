@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+	char juzi[1000],danci[10];
+	int i=0,x=0,y=0,shu=0,zong=0;
+	while((juzi[i]=getchar())!='\n')
+	{
+		x++;
+		i++;
+	
+	}
+	i=0;
+	while((danci[i]=getchar())!='\n')
+	{
+		y++;
+		i++;
+	
+	}
+	for(i=0;i<x;i++)
+	{
+		shu=0;
+		if(juzi[i]==danci[0])
+		{
+			for(int t=0;t<y;t++)
+			{
+				if(juzi[i+t]==danci[t])
+				{
+					shu++;
+				}
+				if(shu==y)
+				{
+					zong++;
+				}
+			}  
+
+		}
+
+	
+	}
+	
+	printf("%d",zong);
+	
+	
+	return 0;}
